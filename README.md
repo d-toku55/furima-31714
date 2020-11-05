@@ -2,13 +2,15 @@
 
 ## users テーブル
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| email      | string | null: false |
-| password   | string | null: false |
-| name       | string | null: false |
-| nickname   | string | null: false |
-| birthday   |        | null: false |
+| Column              | Type   | Options     |
+| ------------------- | ------ | ----------- |
+| encrypted_password  | string | null: false |
+| family_name         | string | null: false |
+| first_name          | string | null: false |
+| family_name_reading | string | null: false |
+| first_name_reading  | string | null: false |
+| nickname            | string | null: false |
+| birthday            | date   | null: false |
 
 ### Association
 
@@ -17,15 +19,17 @@
 
 ## items テーブル
 
-| Column     | Type               | Options                        |
-| ---------- | ------------------ | ------------------------------ |
-| title      | string             | null: false                    |
-| text       | text               | null: false                    |
-| price      | integer            | null: false                    |
-| user       | references         | null: false, foreign_key: true |
-| image      | ActiveStorageで実装 | null: false                    |
-| status     |                    | null: false                    |
-
+| Column          | Type               | Options                        |
+| --------------- | ------------------ | ------------------------------ |
+| title           | string             | null: false                    |
+| text            | text               | null: false                    |
+| price           | integer            | null: false                    |
+| status          | string             | null: false                    |
+| category        | string             | null: false                    |
+| delivery_area   | string             | null: false                    |
+| delivery_days   | string             | null: false                    |
+| delivery_burden | integer            | null: false                    |
+| user            | references         | null: false, foreign_key: true |
 ### Association
 
 - belongs_to :user
@@ -46,15 +50,15 @@
 
 ## addresses テーブル
 
-| Column        | Type       | Options     |
-| --------------| ---------- | ----------- |
-| postal_code   | string     | null: false |
-| prefectures   |            | null: false |
-| municipality  | string     | null: false |
-| address       | string     | null: false |
-| building_name | string     |             |
-| phone_number  | string     | null: false |
-| record        | references |             |
+| Column         | Type       | Options     |
+| -------------- | ---------- | ----------- |
+| postal_code    | string     | null: false |
+| prefectures_id | integer    | null: false |
+| municipality   | string     | null: false |
+| address        | string     | null: false |
+| building_name  | string     |             |
+| phone_number   | string     | null: false |
+| record         | references |             |
 
 ### Association
 
