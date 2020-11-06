@@ -15,21 +15,21 @@
 ### Association
 
 - has_many :items
-- has_many :record
+- has_many :records
 
 ## items テーブル
 
-| Column          | Type               | Options                        |
-| --------------- | ------------------ | ------------------------------ |
-| title           | string             | null: false                    |
-| text            | text               | null: false                    |
-| price           | integer            | null: false                    |
-| status          | string             | null: false                    |
-| category        | string             | null: false                    |
-| delivery_area   | string             | null: false                    |
-| delivery_days   | string             | null: false                    |
-| delivery_burden | integer            | null: false                    |
-| user            | references         | null: false, foreign_key: true |
+| Column             | Type               | Options                        |
+| ------------------ | ------------------ | ------------------------------ |
+| title              | string             | null: false                    |
+| text               | text               | null: false                    |
+| price              | integer            | null: false                    |
+| status_id          | integer             | null: false                    |
+| category_id        | integer             | null: false                    |
+| delivery_area_id   | integer            | null: false                    |
+| delivery_days_id   | integer            | null: false                    |
+| delivery_burden_id | integer            | null: false                    |
+| user               | references         | null: false, foreign_key: true |
 ### Association
 
 - belongs_to :user
