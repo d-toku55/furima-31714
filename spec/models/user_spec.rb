@@ -18,33 +18,45 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
-    it 'family_nameとfirst_nameが空だと登録できない' do
+    it "family_nameが空だと登録できない" do
       @user.family_name = ''
-      @user.first_name = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Family name can't be blank")
+    end
+    it "first_nameが空だと登録できない" do
+      @user.first_name = ''
+      @user.valid?
       expect(@user.errors.full_messages).to include("First name can't be blank")
     end
-    it 'family_name_readingとfirst_name_readingが空だと登録できない' do
+    it "family_name_readingが空だと登録できない" do
       @user.family_name_reading = ''
-      @user.first_name_reading = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Family name reading can't be blank")
+    end
+    it "first_name_readingが空だと登録できない" do
+      @user.first_name_reading = ''
+      @user.valid?
       expect(@user.errors.full_messages).to include("First name reading can't be blank")
     end
-    it 'family_nameとfirst_nameは、全角（漢字、ひらがな、カタカナ）じゃないと、と登録できない' do
+    it "family_nameは、全角（漢字、ひらがな、カタカナ）じゃないと、と登録できない" do
       @user.family_name = 'aaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name is invalid")
+    end
+    it "first_nameは、全角（漢字、ひらがな、カタカナ）じゃないと、と登録できない" do
       @user.first_name = 'aaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Family name is invalid')
-      expect(@user.errors.full_messages).to include('First name is invalid')
+      expect(@user.errors.full_messages).to include("First name is invalid")
     end
-    it 'family_name_readingとfirst_name_readingは、全角（カタカナ）じゃないと、と登録できない' do
+    it "family_name_readingは、全角（カタカナ）じゃないと、と登録できない" do
       @user.family_name_reading = 'あ阿a'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name reading is invalid")
+    end
+    it "first_name_readingは、全角（カタカナ）じゃないと、と登録できない" do
       @user.first_name_reading = 'あ阿a'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Family name reading is invalid')
-      expect(@user.errors.full_messages).to include('First name reading is invalid')
+      expect(@user.errors.full_messages).to include("First name reading is invalid")
     end
     it 'birthdayが空だと登録できない' do
       @user.birthday = ''
