@@ -52,25 +52,50 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Status must be other than 1')
       end
+      it 'status_idが空のとき' do
+        @item.status_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Status is not a number')
+      end
       it 'category_idが1のとき' do
         @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
+      it 'category_idが空のとき' do
+        @item.category_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category is not a number')
       end
       it 'delivery_area_idが1のとき' do
         @item.delivery_area_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery area must be other than 1')
       end
+      it 'delivery_area_idが空のとき' do
+        @item.delivery_area_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Delivery area is not a number')
+      end
       it 'delivery_days_idが1のとき' do
         @item.delivery_days_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery days must be other than 1')
       end
+      it 'delivery_days_idが空のとき' do
+        @item.delivery_days_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Delivery days is not a number')
+      end
       it 'delivery_burden_idが1のとき' do
         @item.delivery_burden_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery burden must be other than 1')
+      end
+      it 'delivery_burden_idが空のとき' do
+        @item.delivery_burden_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Delivery burden is not a number')
       end
       it 'ユーザーが紐付いていないと商品は保存できない' do
         @item.user = nil
