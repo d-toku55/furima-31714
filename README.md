@@ -24,12 +24,13 @@
 | title              | string             | null: false                    |
 | text               | text               | null: false                    |
 | price              | integer            | null: false                    |
-| status_id          | integer             | null: false                    |
-| category_id        | integer             | null: false                    |
+| status_id          | integer            | null: false                    |
+| category_id        | integer            | null: false                    |
 | delivery_area_id   | integer            | null: false                    |
 | delivery_days_id   | integer            | null: false                    |
 | delivery_burden_id | integer            | null: false                    |
 | user               | references         | null: false, foreign_key: true |
+
 ### Association
 
 - belongs_to :user

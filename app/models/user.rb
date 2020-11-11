@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :items
   has_many :records
 
-  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/
-  NAME_READING_REGEX = /\p{katakana}/
+  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
+  NAME_READING_REGEX = /\p{katakana}/.freeze
 
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
   validates :encrypted_password, presence: true
