@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   belongs_to_active_hash :delivery_burden
   belongs_to_active_hash :delivery_area
-  belongs_to_active_hash :delivery_day
+  belongs_to_active_hash :delivery_days
 
   belongs_to :user
   has_one :record
