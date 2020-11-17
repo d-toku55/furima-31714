@@ -1,8 +1,10 @@
 class RecordAddress
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :postal_code, :prefectures_id, :municipality, :address, :building_name, :phone_number
+  attr_accessor :token, :item_id, :user_id, :postal_code, :prefectures_id, :municipality, :address, :building_name, :phone_number
 
   with_options presence: true do
+    validates :token
+
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :prefectures_id, numericality: { other_than: 1 }
     validates :municipality
