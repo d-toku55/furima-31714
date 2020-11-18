@@ -47,9 +47,7 @@ class ItemsController < ApplicationController
   end
 
   def set_protect
-    unless @item.user_id == current_user.id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless @item.record.blank? && (@item.user_id == current_user.id)
   end
 
   def item_params
