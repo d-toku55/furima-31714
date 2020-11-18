@@ -5,7 +5,7 @@ class RecordAddress
   with_options presence: true do
     validates :token
 
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :prefectures_id, numericality: { other_than: 1 }
     validates :municipality
     validates :address
