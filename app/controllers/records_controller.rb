@@ -1,19 +1,23 @@
 class RecordsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
 
   def index
     @record_address = RecordAddress.new
+    unless @item.record.blank? && (current_user != @item.user)
+      redirect_to root_path
+    end
   end
 
   def create
     @record_address = RecordAddress.new(record_params)
-      if @record_address.valid?
-        pay_item
-        @record_address.save
-        redirect_to root_path
-      else
-        render :index
-      end
+    if @record_address.valid?
+      pay_item
+      @record_address.save
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 
   private
@@ -23,7 +27,7 @@ class RecordsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: Item.find(params[:item_id]).price,
       card: record_params[:token],
